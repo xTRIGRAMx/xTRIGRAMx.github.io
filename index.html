@@ -79,6 +79,16 @@
   .skills h3{ font-size:20px; margin-bottom:10px; }
   .skills p{ margin:0; color:var(--paper-dim); font-size:15px; }
 
+  /* SKILLS MATRIX */
+  .matrix{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px 56px; margin-top:64px;
+    padding-top:48px; border-top:1px solid var(--line); }
+  .bar-row .bar-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; font-size:15px; }
+  .bar-row .tier{ color:var(--paper-dim); font-size:13px; }
+  .track{ height:4px; background:var(--line); border-radius:2px; overflow:hidden; }
+  .fill{ display:block; height:100%; background:var(--accent); border-radius:2px; transform:scaleX(0); transform-origin:left;
+    transition:transform 1.2s var(--ease); transition-delay:calc(var(--i,0)*90ms + .2s); }
+  .matrix.in-view .fill{ transform:scaleX(var(--l)); }
+
   /* PROJECT CARDS (hover / focus reveals detail) */
   .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin-top:32px; }
   .card{ position:relative; aspect-ratio:4/5; border-radius:4px; overflow:hidden; background:var(--ink-soft);
@@ -143,11 +153,13 @@
     section{ padding:80px 24px; } .nav,.nav.scrolled{ padding-left:24px; padding-right:24px; }
     .hero-grid{ grid-template-columns:1fr; gap:48px; }
     .portrait{ max-width:280px; }
+    .matrix{ grid-template-columns:1fr; }
     .stats{ grid-template-columns:1fr; gap:28px; }
     .job{ grid-template-columns:1fr; gap:4px; }
   }
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
+    .fill{ transition:none !important; transform:scaleX(var(--l)) !important; }
     .reveal,.word-reveal .word,.menu-links a,.card .detail{ transition:none !important; opacity:1; transform:none; filter:none; }
   }
 </style>
@@ -218,6 +230,20 @@
       <div class="reveal"><h3>Data</h3><p>SQL Server, CosmosDB, SQLite</p></div>
       <div class="reveal reveal-1"><h3>Architecture &amp; practices</h3><p>Microservices, Clean Architecture, Agile, RESTful API design, JWT authentication</p></div>
       <div class="reveal reveal-2"><h3>Spoken languages</h3><p>English, Setswana, isiZulu</p></div>
+    </div>
+
+    <!-- Edit --l (0 to 1) to change a bar's length, and the tier text beside it -->
+    <div class="matrix reveal" aria-label="Skill proficiency">
+      <div class="bar-row" style="--l:0.95;--i:0"><div class="bar-head"><span>C# / .NET</span><span class="tier">Expert</span></div><div class="track"><span class="fill"></span></div></div>
+      <div class="bar-row" style="--l:0.90;--i:1"><div class="bar-head"><span>ASP.NET Core</span><span class="tier">Expert</span></div><div class="track"><span class="fill"></span></div></div>
+      <div class="bar-row" style="--l:0.85;--i:2"><div class="bar-head"><span>SQL Server</span><span class="tier">Advanced</span></div><div class="track"><span class="fill"></span></div></div>
+      <div class="bar-row" style="--l:0.80;--i:3"><div class="bar-head"><span>Blazor / MudBlazor</span><span class="tier">Advanced</span></div><div class="track"><span class="fill"></span></div></div>
+      <div class="bar-row" style="--l:0.65;--i:4"><div class="bar-head"><span>Microsoft Azure</span><span class="tier">Working</span></div><div class="track"><span class="fill"></span></div></div>
+      <div class="bar-row" style="--l:0.65;--i:5"><div class="bar-head"><span>Angular</span><span class="tier">Working</span></div><div class="track"><span class="fill"></span></div></div>
+      <div class="bar-row" style="--l:0.65;--i:6"><div class="bar-head"><span>Xamarin / .NET MAUI</span><span class="tier">Working</span></div><div class="track"><span class="fill"></span></div></div>
+      <div class="bar-row" style="--l:0.65;--i:7"><div class="bar-head"><span>JavaScript</span><span class="tier">Working</span></div><div class="track"><span class="fill"></span></div></div>
+      <div class="bar-row" style="--l:0.65;--i:8"><div class="bar-head"><span>Java</span><span class="tier">Working</span></div><div class="track"><span class="fill"></span></div></div>
+      <div class="bar-row" style="--l:0.60;--i:9"><div class="bar-head"><span>React</span><span class="tier">Growing</span></div><div class="track"><span class="fill"></span></div></div>
     </div>
   </section>
 
